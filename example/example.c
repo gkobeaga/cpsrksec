@@ -77,7 +77,7 @@ main(int argc, char *argv[])
 #ifdef RNG_SEED
   srand(RNG_SEED);
 #else
-  struct tm_seed;
+  struct timespec tm_seed;
   clock_gettime(CLOCK_REALTIME, &tm_seed);
   srand(tm_seed.tv_nsec / 1000);
 #endif
