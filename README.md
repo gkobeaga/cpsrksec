@@ -26,7 +26,7 @@ Use GNU Autotools to generate the *configure* scricpt:
 
 To build and install the binary type:
 ```sh
-mk build && cd build
+mkdir -p build && cd build
 ../configure
 make
 make install
@@ -38,7 +38,7 @@ For a use of case of the cpsrksec library, see the [example](example/) folder.
 
 Reproducibility
 ---------------
-We consider that the reproducibility of the scientific works is a real concern. We provide in the [experiments](exp/) folder the code that we have used to call the tested strategies, the scripts to run the experiments and post-processing of the results. Before using this library in a project, we recommend you to verify that the reported results in the paper correspond with the results that you obtain.
+We provide in the [experiments](exp/) folder the code used to run the experiments.
 
 Acknowledgments
 ---------------
