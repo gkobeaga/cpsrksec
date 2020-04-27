@@ -1,6 +1,6 @@
 #include "cpsrksec.h"
 
-#define RNG_SEED (22)
+//#define RNG_SEED (2020)
 
 #define V_COUNT (9)
 #define E_COUNT (15)
@@ -74,11 +74,12 @@ main(int argc, char *argv[])
 
   par = cp_create_params();
 
-  srand (time(NULL));
 #ifdef RNG_SEED
-  rng_init_rand(par->rand, RNG_SEED);
+  srand(RNG_SEED);
 #else
-  rng_init_rand(par->rand, rand());
+  struct tm_seed;
+  clock_gettime(CLOCK_REALTIME, &tm_seed);
+  srand(tm_seed.tv_nsec / 1000);
 #endif
 
   supportgraph = graph_create();
