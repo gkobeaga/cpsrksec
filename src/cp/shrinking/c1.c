@@ -53,33 +53,6 @@ cp_shrink_c1(struct cp_par *par, struct graph *graph, struct vertex *qstart,
       u->vt_x = e_vu->x;
       if (!try_c1 && fabs(u->y - c) < ZEROPLUS && fabs(e_vu->x - c) < ZEROPLUS)
         try_c1++;
-      else if (par->srk_s2 && graph->n3v > 2)
-      {
-        u = otherend(e_vu, v);
-        if (e_vu->x > v->y + C2_ZEROPLUS && e_vu->x > u->y + C2_ZEROPLUS &&
-            v->i != graph->tail->i && u->i != graph->tail->i )
-        {
-          graph_identify_vertices(graph, v, u);
-          par->count_s2++;
-
-          ADD_TO_SRK_QUEUE(v);
-          for (h = v->edge; h; h = outnext(h, v))
-          {
-            other = otherend(h, v);
-            if (h->x > other->y + ZEROPLUS)
-            {
-              rval = repo_cp_save_vertices(graph, v, other, h->x, repo);
-              if (rval)
-              {
-                printf("repo_cp_save_vertices failed\n");
-                goto CLEANUP;
-              }
-            }
-            ADD_TO_SRK_QUEUE(other);
-          }
-          goto GET_OUT;
-        }
-      }
     }
 
     if (try_c1)
@@ -93,8 +66,7 @@ cp_shrink_c1(struct cp_par *par, struct graph *graph, struct vertex *qstart,
           {
             next = outnext(e_ut, u);
             t    = otherend(e_ut, u);
-            if (t->i != v->i && fabs(t->y - c) < ZEROPLUS &&
-                t->vt_x < ZEROPLUS )
+            if (t->i != v->i && fabs(t->y - c) < ZEROPLUS && t->vt_x < ZEROPLUS)
             {
               if (fabs(e_ut->x - c) < ZEROPLUS)
               {
