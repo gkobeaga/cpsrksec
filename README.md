@@ -1,9 +1,9 @@
 CPSRKSEC
 =======
 
-This is a C/C++ library to use in Branch-and-Cut algorithms for cycle problems. It provides shrinking strategies to simplify the support graph and exact separation algorithms for the subcycle elimination separation problem.
+This is a C library to use in Branch-and-Cut algorithms for cycle problems. It provides shrinking strategies to simplify the support graph and exact separation algorithms for the subcycle elimination separation problem.
 
-A Cycle Problem (CP) is an optimization problem whose solution is a simple cycle. The most well-known CP is the Travelling Salesman Problem (TSP), whose solution is a Hamiltonian cycle. Other cycle problems are the so-called TSP with Profits. The solutions of these problems are cycles not necessarily Hamiltonian. There are many problems that can be considered a CP.
+A Cycle Problem (CP) is an optimization problem whose solution is a simple cycle. The most well-known CP is the Travelling Salesman Problem (TSP), whose solution is a Hamiltonian cycle. Other cycle problems are the so-called TSP with Profits, such us the Orienteering Problem (OP). The solutions of these problems are cycles not necessarily Hamiltonian. There are many problems that can be considered a CP.
 
 Instructions to build
 ---------------------
