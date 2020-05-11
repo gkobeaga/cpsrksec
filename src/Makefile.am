@@ -14,7 +14,6 @@ libcpsrksec_la_SOURCES = util/prime.c             \
 			 cp/shrinking/c1c2.c      \
 			 cp/shrinking/c1c2c3.c    \
 			 cp/shrinking/s1.c        \
-			 cp/shrinking/s1c3.c      \
 			 cp/shrinking/shrinking.c \
 			 cp/sec/gomoryhu.c        \
 			 cp/sec/hong.c            \
