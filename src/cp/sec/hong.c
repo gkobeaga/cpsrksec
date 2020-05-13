@@ -2,17 +2,16 @@
 
 static int
 test_cut(struct graph *graph, struct repo *repo, int cvcount,
-         struct vertex **cverts, double val, double lowerbound);
+         struct vertex **cverts, double val);
 
 int
 cp_sec_hong(struct cp_par *par, struct graph *graph, struct repo *repo)
 {
-  int rval   = 0;
+  int rval = 0;
   int oldn3v;
 
   int reorder;
 
-  double lowerbound = -1;
   double val;
 
   struct vertex *squeue = NULL;
@@ -30,7 +29,7 @@ cp_sec_hong(struct cp_par *par, struct graph *graph, struct repo *repo)
     rval = mincut_solve(graph, graph->tail, currvert, &val, &cverts, &cvcount);
     check_rval(rval, "solve_mincut failed", CLEANUP);
 
-    test_cut(graph, repo, cvcount, cverts, val, lowerbound);
+    test_cut(graph, repo, cvcount, cverts, val);
     free(cverts);
 
     /* Shrink vertices if Rule S3 is considered */
@@ -38,9 +37,9 @@ cp_sec_hong(struct cp_par *par, struct graph *graph, struct repo *repo)
     {
       reorder = 0;
 
-     f = graph_find_arc(graph, graph->tail, currvert);
-     if (f && f->x > graph->tail->y)
-       reorder = 1;
+      f = graph_find_arc(graph, graph->tail, currvert);
+      if (f && f->x > graph->tail->y)
+        reorder = 1;
 
       graph_identify_vertices(graph, graph->tail, currvert);
       check_rval(rval, "identify_srkvertices failed", CLEANUP);
@@ -94,7 +93,7 @@ CLEANUP:
 
 static int
 test_cut(struct graph *graph, struct repo *repo, int cvcount,
-         struct vertex **cverts, double val, double lowerbound)
+         struct vertex **cverts, double val)
 {
   int rval = 0;
   int i;
@@ -129,7 +128,7 @@ test_cut(struct graph *graph, struct repo *repo, int cvcount,
 #endif
     }
 
-    if ( val - 2 * maxweight  < 0 && nverts > 2 && nverts < graph->nv - 2)
+    if (val - 2 * maxweight < 0 && nverts > 2 && nverts < graph->nv - 2)
     {
       if (nverts <= graph->nv / 2)
         clique = conv_vertices2clique(graph->orig, verts, nverts);
