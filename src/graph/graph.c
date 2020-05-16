@@ -489,7 +489,10 @@ graph_read(char *fname)
   int nv, na;
   struct arc *arc;
   char buf[256];
-  struct graph *graph = graph_create();
+  int tail, head, n_read = 0;
+  double node_val, arc_val;
+  char *read_ptr      = buf;
+  struct graph *graph = NULL;
 
   file = fopen(fname, "r");
   if (file == NULL)
@@ -498,14 +501,18 @@ graph_read(char *fname)
     goto done;
   }
 
-  fscanf(file, "%*s %d", &nv);
+  if (fscanf(file, "%*s %d", &nv) == 1)
+    ;
+  else
+    exit(1);
+  if (fscanf(file, "%*s %d", &na) == 1)
+    ;
+  else
+    exit(1);
+
+  graph = graph_create();
   graph_add_vertices(graph, nv);
 
-  fscanf(file, "%*s %d", &na);
-
-  int tail, head, n_read = 0;
-  double node_val, arc_val;
-  char *read_ptr = buf;
   while (fgets(buf, 254, file) != NULL)
   {
     if (sscanf(buf, "%*s %d [%lf]: %n", &tail, &node_val, &n_read) > 0)
