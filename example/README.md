@@ -2,7 +2,9 @@ Example
 =======
 This example corresponds to the SEC separation problem derived from the graph of Figure 6 in the [paper](https://arxiv.org/pdf/2004.14574.pdf).
 
-<div style="text-align:center"><img src="./example.png" /></div>
+<p align="center">
+<img src="./example.png"/>
+</p>
 
 ### Build the example
 
