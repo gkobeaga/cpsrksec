@@ -15,12 +15,12 @@ cd exp
 Process the experiment results
 -------------------
 
-The results are processed using R. First, if needed, install the dependencies:
+After running the experiments, process the results using R. First, if needed, install the dependencies:
 ```sh
 install.packages(c("tables", "plyr", "dplyr", "tidyr"))
 ```
-To run the script to process the results:
+The results can be processed by:
 ```sh
 Rscript results.R
 ```
-Once the R script has finished, you will see a directory named *tables* where the tables reported in the paper are stored.
+Once the R script has finished, you will see a directory named `tables` where the tables reported in the paper are stored.

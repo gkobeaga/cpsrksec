@@ -1,9 +1,11 @@
 CPSRKSEC
 =======
 
-This is a C library to use in Branch-and-Cut algorithms for cycle problems. It provides shrinking strategies to simplify the support graph and exact separation algorithms for the subcycle elimination separation problem.
+This is a C library for Branch-and-Cut algorithms that deal with cycle problems. It provides shrinking strategies to simplify the support graph and exact separation algorithms for the subcycle elimination separation problem.
 
-A Cycle Problem (CP) is an optimization problem whose solution is a simple cycle. The most well-known CP is the Travelling Salesman Problem (TSP), whose solution is a Hamiltonian cycle. Other cycle problems are the so-called TSP with Profits, such us the Orienteering Problem (OP). The solutions of these problems are cycles not necessarily Hamiltonian. There are many problems that can be considered a CP.
+A Cycle Problem (CP) is an optimization problem whose solution is a simple cycle. The Travelling Salesman Problem (TSP), whose solutions are Hamiltonian cycles, is the most well-known CP. Other cycle problems are the so-called TSP with Profits, such us the Orienteering Problem (OP), but there are many problems that can be considered a CP.
+
+This library has been developed to perform the experiments reported in the paper "[On Solving Cycle Problems with Branch-and-Cut: Extending Shrinking and Exact Subcycle Elimination Separation Algorithms](https://arxiv.org/pdf/2004.14574.pdf)" by G. Kobeaga, M. Merino and J.A Lozano.
 
 Instructions to build
 ---------------------
@@ -19,7 +21,7 @@ git clone https://github.com/gkobeaga/cpsrksec
 cd cpsrksec
 ```
 
-Use GNU Autotools to generate the *configure* scricpt:
+Use GNU Autotools to generate the *configure* script:
 ```sh
 ./autogen.sh
 ```
@@ -34,12 +36,29 @@ make install
 
 How to use it
 -------------
-For a use of case of the cpsrksec library, see the [example](example/) folder.
+For a use case of the cpsrksec library, see the [example](example/) folder.
 
 Reproducibility
 ---------------
-We provide in the [experiments](exp/) folder the code used to run the experiments.
+The code used to run the experiments is provided in the [experiments](exp/) folder.
+
+Citation
+---------
+Currently the paper is in revision process. Meanwhile, please use the following citation when using this library or comparing against it:
+
+<pre>
+@misc{kobeaga2020,
+    title  = {On Solving Cycle Problems with Branch-and-Cut:
+              Extending Shrinking and Exact Subcycle Elimination Separation Algorithms},
+    author = {Gorka Kobeaga and Mar\'ia Merino and Jose A. Lozano},
+    year   = {2020},
+    eprint = {2004.14574},
+    archivePrefix={arXiv},
+    primaryClass={cs.DS}
+}
+</pre>
 
 Acknowledgments
 ---------------
-The implementation of the shrinking strategies, the Hong separation algorithms for the Subcycle Elimination Problem, the push-relabel algorithm for Maximum Flow Problem, the Gomory-Hu tree construction and the hashing functions have been inspired in the [Concorde](http://www.math.uwaterloo.ca/tsp/concorde.html) solver for the TSP.
+We gratefully acknowledge the authors of the TSP solver [Concorde](http://www.math.uwaterloo.ca/tsp/concorde.html) for making their code available to the public, since it has been the working basis of our implementations of the shrinking strategies, the Hong separation algorithms for the Subcycle Elimination Problem, the push-relabel algorithm for Maximum Flow Problem, the Gomory-Hu tree construction and the hashing functions.
+

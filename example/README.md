@@ -1,6 +1,8 @@
 Example
 =======
-This example corresponds with the SEC separation problem derived from the graph of Figure 6 in the paper.
+This example corresponds to the SEC separation problem derived from the graph of Figure 6 in the [paper](https://arxiv.org/pdf/2004.14574.pdf).
+
+<div style="text-align:center"><img src="./example.png" /></div>
 
 ### Build the example
 
@@ -26,8 +28,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX/lib/
 Remember to append the new LD_LIBRARY_PATH to your bashrc file.
 
 ### Build with Libtool
-If you are modifying locally the library, probably you are not interested in installing the library system-wide every time you modify a file.
-In that case, you can use Libtool to compile the example, and skip the make install step.
+If you want to make changes in the library code without installing the library system-wide every time you modify a file, use Libtool to compile the example.
 ```sh
 libtool --mode=link gcc -o example  example.c -I../src ../build/src/libcpsrksec.la
 ```
