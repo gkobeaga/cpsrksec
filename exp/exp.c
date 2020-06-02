@@ -1,6 +1,6 @@
 #include "../src/cpsrksec.h"
 
-#define RNG_SEED (2020)
+//#define RNG_SEED (2020)
 
 static void
 help_print_general(const char *my_name),
